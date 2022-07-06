@@ -1,5 +1,5 @@
 {
-  "name": "task",
+  "name": "task1",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,8 +19,6 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "rxjs": "~7.5.0",
-    "scss": "^0.2.4",
-    "scss-loader": "^0.0.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
