@@ -1,32 +1,54 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
   <body>
     <div>
       <h1 class="header">Fosterate</h1>
     </div>
     <div class="nav-bar">
       <div class="nav-items">
-        <span class="nav-item nav-active">
+        <span
+          class="nav-item"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <span class="white-line"></span>
-          <button routerLink="/home" routerLinkActive="active">
+          <a
+            routerLink="/"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
             <b>HOME</b>
-          </button>
+          </a>
         </span>
-        <span class="nav-item">
+
+        <span
+          class="nav-item"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           <span class="white-line"></span>
-          <button routerLink="/add" routerLinkActive="active">
+          <a
+            routerLink="/add"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
             <b>+ADD</b>
-          </button>
+          </a>
         </span>
       </div>
+
       <div>
         <img
           class="blog-icon"
-          src="../../assets/blog-icon.png"
+          src="../../assets//blog-icon.png"
           alt="blog-icon"
           width="22px"
-          height="22px"
+          height="30px"
         />
       </div>
     </div>
+    <h2><b>CONTACTS</b></h2>
   </body>
 </html>
