@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class HOMEComponent implements OnInit {
-  
+
   constructor(public _contactsinfoService: ContactsinfoService, private router: Router) { }
 
   ngOnInit(): void { }
@@ -21,7 +21,13 @@ export class HOMEComponent implements OnInit {
 
   onDeleteContact(){
     this._contactsinfoService.arr.splice(this._contactsinfoService.index, 1);
-    this._contactsinfoService.showMyDiv = false
+    if(this._contactsinfoService.index=0){
+    this._contactsinfoService.index = 0
+    this._contactsinfoService.showMyDiv = true
+    }
+    if(this._contactsinfoService.arr.length==0){
+      this._contactsinfoService.showMyDiv = false
+    }
   }
 
   onEditContact(){
