@@ -1,12 +1,41 @@
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-  <p>home works</p>
+  <div class="container">
+    <div>
+      <div class="table" *ngFor="let contact of _contactsinfoService.arr; let i = index;">
+        <div class="table-data" (click) = "displayContacts(i)" [ngClass]="{'selected': _contactsinfoService.index===i}">
+            <div><h4>{{contact.name}}</h4></div>
+            <div>{{contact.mobile}}</div>
+            <div>{{contact.email}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="selected-contact" *ngIf="_contactsinfoService.showMyDiv">
+      <div class="Details">
+        <div>
+            <h2> {{_contactsinfoService.arr[_contactsinfoService.index].name}} </h2>
+            <div class="pb-2">Email: {{_contactsinfoService.arr[_contactsinfoService.index].email}}</div>
+            <div class="pb-2">Mobile: {{_contactsinfoService.arr[_contactsinfoService.index].mobile}}</div>
+            <div class="pb-2">Landline: {{_contactsinfoService.arr[_contactsinfoService.index].landline}}</div>
+            <div class="pb-2">Website: {{_contactsinfoService.arr[_contactsinfoService.index].website}} </div>
+            <pre>Address: {{_contactsinfoService.arr[_contactsinfoService.index].address}}</pre>
+        </div>
+        <div class="actions">
+            <ul style="margin: 0px;">
+                <li class="action-bar" (click) = "onEditContact()" style="padding-left: 65px;"><img style="height:15px; width: 15px; margin-bottom: 5px;" src="../../assets/Edit-icon.png" alt="Edit icon"></li>
+                <li class="action-bar" (click) = "onEditContact()">EDIT</li>
+                <li class="action-bar" (click) = "onDeleteContact()" style="padding-left: 15px;"><img style="height: 22px;width: 15px; margin-bottom: 8px;" src="../../assets/delete1.png" alt="Delete icon"></li>
+                <li class="action-bar" (click) = "onDeleteContact()">DELETE</li>
+            </ul>
+        </div>
+      </div>
+  </div>
+</div>
+
 </body>
 </html>

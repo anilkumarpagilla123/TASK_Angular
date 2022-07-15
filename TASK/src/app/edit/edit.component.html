@@ -6,13 +6,13 @@
 <body>
   <div class="container">
     <div>
-      <div class="table" *ngFor="let contact of _contactsinfoService.arr;let i=index;">
-        <div class="table-data" (click) = "displayContacts(i)">
-            <div><h4>{{contact.name}}</h4></div>
-            <div>{{contact.mobile}}</div>
-            <div>{{contact.email}}</div>
-        </div>
+    <div class="table" *ngFor="let contact of _contactsinfoService.arr;let i=index">
+      <div class="table-data" (click) = "displayContacts(i)">
+          <div><h4>{{contact.name}}</h4></div>
+          <div>{{contact.mobile}}</div>
+          <div>{{contact.email}}</div>
       </div>
+    </div>
   </div>
     <div class="form-div">
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
@@ -20,7 +20,7 @@
         <div class="form-group">
           <label> <b>Name</b> <span class="text-danger">*</span></label>
           <input [class.is-invalid]="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched"
-            formControlName="name" type="text" class="form-control" required/>
+            formControlName="name" type="text" class="form-control" required [(ngModel)]="_contactsinfoService.arr[_contactsinfoService.index].name"/>
           <small [class.d-none]=" registrationForm.get('name')?.valid || registrationForm.get('name')?.untouched "
             class="text-danger" >Username is required</small>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
           <label><b>Email</b> <span class="text-danger">*</span></label>
           <input [class.is-invalid]=" registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
-            formControlName="email" type="email" class="form-control" required />
+            formControlName="email" type="email" class="form-control" required [(ngModel)]="_contactsinfoService.arr[_contactsinfoService.index].email"/>
           <small [class.d-none]=" registrationForm.get('email')?.valid || registrationForm.get('email')?.untouched"
             class="text-danger" >Email is required</small>
         </div>
@@ -37,31 +37,31 @@
           <div class="col">
             <label><b>Mobile</b> <span class="text-danger">*</span></label>
             <input [class.is-invalid]="registrationForm.get('mobile')?.invalid &&  registrationForm.get('mobile')?.touched"
-              formControlName="mobile" type="text" class="form-control" required/>
+              formControlName="mobile" type="text" class="form-control" required [(ngModel)]="_contactsinfoService.arr[_contactsinfoService.index].mobile"/>
             <small
               [class.d-none]="registrationForm.get('mobile')?.valid || registrationForm.get('mobile')?.untouched" class="text-danger"
               >Mobile is required</small>
           </div>
           <div class="col">
             <label><b>Landline</b></label>
-            <input formControlName="landline" type="text" class="form-control" />
+            <input formControlName="landline" type="text" class="form-control"[(ngModel)]="_contactsinfoService.arr[_contactsinfoService.index].landline" />
           </div>
         </div>
 
         <div class="form-group">
           <label><b>Website</b></label>
-          <input formControlName="website" type="url" class="form-control" />
+          <input formControlName="website" type="url" class="form-control" [(ngModel)]="_contactsinfoService.arr[_contactsinfoService.index].website"/>
         </div>
 
         <div>
           <label><b>Address</b></label>
-          <textarea formControlName="address" class="form-control">
+          <textarea formControlName="address" class="form-control" [(ngModel)]="_contactsinfoService.arr[_contactsinfoService.index].address">
           </textarea>
         </div>
 
         <div>
           <button class="btn bg-success add-button" type="submit">
-            Add
+            Edit
           </button>
         </div>
 
@@ -70,3 +70,4 @@
   </div>
 </body>
 </html>
+

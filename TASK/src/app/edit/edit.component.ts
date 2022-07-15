@@ -4,18 +4,15 @@ import { FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.sass']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.sass']
 })
-export class ADDComponent implements OnInit {
-
-  public contacts: any = [];
+export class EditComponent implements OnInit {
 
   constructor(public _contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
 
-  ngOnInit(): void { }
-
+  ngOnInit(): void {}
   registrationForm = this.addForm.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
@@ -31,13 +28,13 @@ export class ADDComponent implements OnInit {
       window.alert('Enter Required Fields!')
     }
     else{
-          this._contactsinfoService.arr.push(this.registrationForm.value)
+          this._contactsinfoService.arr[this._contactsinfoService.index] = this.registrationForm.value
           this.router.navigate(['/'])
     }
   }
   displayContacts(i:number){
-    this._contactsinfoService.index = i
-    this._contactsinfoService.showMyDiv = true
+    this._contactsinfoService.index=i;
+    this._contactsinfoService.showMyDiv=true;
     this.router.navigate(['/']);
   }
 }
