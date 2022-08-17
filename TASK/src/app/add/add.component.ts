@@ -32,6 +32,8 @@ export class ADDComponent implements OnInit {
     }
     else{
           this._contactsinfoService.arr.push(this.registrationForm.value)
+          this._contactsinfoService.index = this._contactsinfoService.arr.length-1;
+          this._contactsinfoService.showMyDiv = true;
           this.router.navigate(['/'])
     }
   }

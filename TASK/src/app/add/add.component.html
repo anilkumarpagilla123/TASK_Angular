@@ -14,7 +14,7 @@
         </div>
       </div>
   </div>
-    <div class="form-div">
+    <div class="form-div" [ngClass]="{'Formstyle': _contactsinfoService.arr.length==0}">
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
