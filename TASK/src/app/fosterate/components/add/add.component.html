@@ -24,7 +24,10 @@
         <input [class.is-invalid]=" registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
           formControlName="email" type="email" class="form-control" required />
         <small [class.d-none]=" registrationForm.get('email')?.valid || registrationForm.get('email')?.untouched"
-          class="text-danger" >Email is required</small>
+          class="text-danger" >
+          <div *ngIf="registrationForm.get('email')?.errors?.['required']" >Email is required</div>
+          <div *ngIf="registrationForm.get('email')?.errors?.['pattern']" >Invalid Email</div>
+        </small>
       </div>
 
       <div class="row">
@@ -32,9 +35,11 @@
           <label><b>Mobile</b> <span class="text-danger">*</span></label>
           <input [class.is-invalid]="registrationForm.get('mobile')?.invalid &&  registrationForm.get('mobile')?.touched"
             formControlName="mobile" type="text" class="form-control" required/>
-          <small
-            [class.d-none]="registrationForm.get('mobile')?.valid || registrationForm.get('mobile')?.untouched" class="text-danger"
-            >Mobile is required</small>
+          <small [class.d-none]="registrationForm.get('mobile')?.valid || registrationForm.get('mobile')?.untouched" class="text-danger">
+            <div *ngIf="registrationForm.get('mobile')?.errors?.['required']" >Mobile Number is required</div>
+            <div *ngIf="registrationForm.get('mobile')?.errors?.['pattern']" >Invalid Mobile</div>
+            <div *ngIf="registrationForm.get('mobile')?.errors?.['minlength'] || registrationForm.get('mobile')?.errors?.['maxlength']">Mobile number must be at least 10 numbers</div>
+          </small>
         </div>
         <div class="col">
           <label><b>Landline</b></label>
@@ -54,7 +59,7 @@
       </div>
 
       <div>
-        <button class="btn bg-success add-button" type="submit">
+        <button class="btn bg-success add-button" [disabled]="registrationForm.invalid" type="submit">
           Add
         </button>
       </div>
