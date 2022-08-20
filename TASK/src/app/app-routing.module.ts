@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ADDComponent } from './add/add.component';
-import { HOMEComponent } from './home/home.component';
-import { EditComponent } from './edit/edit.component';
+import { ADDComponent } from './fosterate/components/add/add.component';
+import { HOMEComponent } from './fosterate/components/home/home.component';
+import { EditComponent } from './fosterate/components/edit/edit.component';
 
 const routes: Routes = [
   { path:'',component:HOMEComponent, pathMatch: 'full' },
