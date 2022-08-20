@@ -10,27 +10,27 @@ import { Router } from '@angular/router';
 
 export class HOMEComponent implements OnInit {
 
-  constructor(public _contactsinfoService: ContactsinfoService, private router: Router) { }
+  constructor(public contactsinfoService: ContactsinfoService, private router: Router) { }
 
   ngOnInit(): void { }
 
-  displayContacts(i: number){
-    this._contactsinfoService.index = i
-    this._contactsinfoService.showMyDiv = true
+  displayContacts(contactId: number){
+    this.contactsinfoService.index = contactId;
+    this.contactsinfoService.showContactDetails = true;
   }
 
   onDeleteContact(){
-    this._contactsinfoService.arr.splice(this._contactsinfoService.index, 1);
-    if(this._contactsinfoService.index=0){
-    this._contactsinfoService.index = 0
-    this._contactsinfoService.showMyDiv = true
+    this.contactsinfoService.contacts.splice(this.contactsinfoService.index, 1);
+    if(this.contactsinfoService.index=0){
+      this.contactsinfoService.index = 0;
+      this.contactsinfoService.showContactDetails = true;
     }
-    if(this._contactsinfoService.arr.length==0){
-      this._contactsinfoService.showMyDiv = false
+    if(this.contactsinfoService.contacts.length==0){
+      this.contactsinfoService.showContactDetails = false;
     }
   }
 
   onEditContact(){
-    this.router.navigate(['/edit'])
+    this.router.navigate(['/edit']);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsinfoService } from '../contactsinfo.service';
-import { FormBuilder, NgForm, Validators} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,15 +17,15 @@ export class EditComponent implements OnInit {
   website:String = '';
   address:String = '';
 
-  constructor(public _contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
+  constructor(public contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    this.name = this._contactsinfoService.arr[this._contactsinfoService.index].name;
-    this.email=this._contactsinfoService.arr[this._contactsinfoService.index].email;
-    this.mobile=this._contactsinfoService.arr[this._contactsinfoService.index].mobile;
-    this.landline=this._contactsinfoService.arr[this._contactsinfoService.index].landline;
-    this.website=this._contactsinfoService.arr[this._contactsinfoService.index].website;
-    this.address=this._contactsinfoService.arr[this._contactsinfoService.index].address;
+    this.name = this.contactsinfoService.contacts[this.contactsinfoService.index].name;
+    this.email=this.contactsinfoService.contacts[this.contactsinfoService.index].email;
+    this.mobile=this.contactsinfoService.contacts[this.contactsinfoService.index].mobile;
+    this.landline=this.contactsinfoService.contacts[this.contactsinfoService.index].landline;
+    this.website=this.contactsinfoService.contacts[this.contactsinfoService.index].website;
+    this.address=this.contactsinfoService.contacts[this.contactsinfoService.index].address;
   }
 
   registrationForm = this.addForm.group({
@@ -40,17 +40,17 @@ export class EditComponent implements OnInit {
   onSubmit(){
     if(this.registrationForm.value.name === '' || this.registrationForm.value.email === '' || this.registrationForm.value.mobile === '')
     {
-      window.alert('Enter Required Fields!')
+      console.log('Enter Required Fields!');
     }
     else{
-      this._contactsinfoService.arr[this._contactsinfoService.index] =this.registrationForm.value
-      this.router.navigate(['/'])
+      this.contactsinfoService.contacts[this.contactsinfoService.index] =this.registrationForm.value;
+      this.router.navigate(['/']);
     }
   }
 
-  displayContacts(i:number){
-    this._contactsinfoService.index=i;
-    this._contactsinfoService.showMyDiv=true;
+  displayContacts( contactId:number ){
+    this.contactsinfoService.index=contactId;
+    this.contactsinfoService.showContactDetails=true;
     this.router.navigate(['/']);
   }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsinfoService } from '../contactsinfo.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  constructor(public _contactsinfoService: ContactsinfoService, private router: Router) { }
+  constructor(public contactsinfoService: ContactsinfoService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 }

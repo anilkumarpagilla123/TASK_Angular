@@ -1,14 +1,8 @@
-<html lang="en">
-<head>
-  <title>Document</title>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
   <div class="container">
-    <h2 *ngIf="_contactsinfoService.arr.length==0" class="contacts-empty">No Contacts Available</h2>
+    <h2 *ngIf="contactsinfoService.contacts.length==0" class="contacts-empty">No Contacts Available</h2>
     <div>
-      <div class="table" *ngFor="let contact of _contactsinfoService.arr; let i = index;">
-        <div class="table-data" (click) = "displayContacts(i)" [ngClass]="{'selected': _contactsinfoService.index===i}">
+      <div class="contacts" *ngFor="let contact of contactsinfoService.contacts; let contactId = index;">
+        <div class="contact" (click) = "displayContacts(contactId)" [ngClass]="{'selected': contactsinfoService.index===contactId }">
             <div><h4>{{contact.name}}</h4></div>
             <div>{{contact.mobile}}</div>
             <div>{{contact.email}}</div>
@@ -16,15 +10,15 @@
       </div>
     </div>
 
-    <div class="selected-contact" *ngIf="_contactsinfoService.showMyDiv">
-      <div class="Details">
+    <div class="selected-contact" *ngIf="contactsinfoService.showContactDetails">
+      <div class="contact-Details">
         <div>
-            <h2> {{_contactsinfoService.arr[_contactsinfoService.index].name}} </h2>
-            <div class="pb-2">Email: {{_contactsinfoService.arr[_contactsinfoService.index].email}}</div>
-            <div class="pb-2">Mobile: {{_contactsinfoService.arr[_contactsinfoService.index].mobile}}</div>
-            <div class="pb-2">Landline: {{_contactsinfoService.arr[_contactsinfoService.index].landline}}</div>
-            <div class="pb-2">Website: {{_contactsinfoService.arr[_contactsinfoService.index].website}} </div>
-            <pre>Address: {{_contactsinfoService.arr[_contactsinfoService.index].address}}</pre>
+            <h2> {{contactsinfoService.contacts[contactsinfoService.index].name}} </h2>
+            <div class="pb-2">Email: {{contactsinfoService.contacts[contactsinfoService.index].email}}</div>
+            <div class="pb-2">Mobile: {{contactsinfoService.contacts[contactsinfoService.index].mobile}}</div>
+            <div class="pb-2">Landline: {{contactsinfoService.contacts[contactsinfoService.index].landline}}</div>
+            <div class="pb-2">Website: {{contactsinfoService.contacts[contactsinfoService.index].website}} </div>
+            <pre>Address: {{contactsinfoService.contacts[contactsinfoService.index].address}}</pre>
         </div>
         <div class="actions">
             <ul style="margin: 0px;">
@@ -38,5 +32,3 @@
   </div>
 </div>
 
-</body>
-</html>

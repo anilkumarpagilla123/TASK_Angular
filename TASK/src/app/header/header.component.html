@@ -1,31 +1,24 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    <div>
-      <h1 class="header">Fosterate</h1>
-    </div>
-    <div class="nav-bar">
-      <div class="nav-items">
-        <span class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-          <span class="white-line"></span>
-          <a routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-            <b>HOME</b>
-          </a>
-        </span>
+<div>
+  <h1 class="header">Fosterate</h1>
+</div>
+<div class="nav-bar">
+  <div class="nav-item" style="margin-left: 13px">
+    <span class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="empty-space"></span>
+      <a routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+        <b>HOME</b>
+      </a>
+    </span>
 
-        <span class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-          <span class="white-line"></span>
-          <a routerLink="/add" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-            <b>+ADD</b>
-          </a>
-        </span>
-      </div>
-      <div>
-        <img class="blog-icon" src="../../assets//blog-icon.png" alt="blog-icon"  width="22px" height="30px" />
-      </div>
-    </div>
-    <h2 *ngIf="_contactsinfoService.arr.length!=0"><b>CONTACTS</b></h2>
-  </body>
-</html>
+    <span class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="empty-space"></span>
+      <a routerLink="/add" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+        <b>+ADD</b>
+      </a>
+    </span>
+  </div>
+  <div>
+    <img class="blog-icon" src="../../assets//blog-icon.png" alt="blog-icon"  width="22px" height="30px" />
+  </div>
+</div>
+<h2 *ngIf="contactsinfoService.contacts.length!=0"><b>CONTACTS</b></h2>

@@ -1,72 +1,63 @@
-<html lang="en">
-<head>
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-  <div class="container">
-    <div>
-      <div class="table" *ngFor="let contact of _contactsinfoService.arr;let i=index;">
-        <div class="table-data" (click) = "displayContacts(i)">
-            <div><h4>{{contact.name}}</h4></div>
-            <div>{{contact.mobile}}</div>
-            <div>{{contact.email}}</div>
+<div class="container">
+  <div>
+    <div class="contacts" *ngFor="let contact of contactsinfoService.contacts;let contactId=index;">
+      <div class="contact" (click) = "displayContacts(contactId)">
+          <div><h4>{{contact.name}}</h4></div>
+          <div>{{contact.mobile}}</div>
+          <div>{{contact.email}}</div>
+      </div>
+    </div>
+</div>
+  <div class="form-div" [ngClass]="{'Formstyle': contactsinfoService.contacts.length==0}">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label> <b>Name</b> <span class="text-danger">*</span></label>
+        <input [class.is-invalid]="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched"
+          formControlName="name" type="text" class="form-control" required/>
+        <small [class.d-none]=" registrationForm.get('name')?.valid || registrationForm.get('name')?.untouched "
+          class="text-danger" >Username is required</small>
+      </div>
+
+      <div class="form-group">
+        <label><b>Email</b> <span class="text-danger">*</span></label>
+        <input [class.is-invalid]=" registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
+          formControlName="email" type="email" class="form-control" required />
+        <small [class.d-none]=" registrationForm.get('email')?.valid || registrationForm.get('email')?.untouched"
+          class="text-danger" >Email is required</small>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label><b>Mobile</b> <span class="text-danger">*</span></label>
+          <input [class.is-invalid]="registrationForm.get('mobile')?.invalid &&  registrationForm.get('mobile')?.touched"
+            formControlName="mobile" type="text" class="form-control" required/>
+          <small
+            [class.d-none]="registrationForm.get('mobile')?.valid || registrationForm.get('mobile')?.untouched" class="text-danger"
+            >Mobile is required</small>
+        </div>
+        <div class="col">
+          <label><b>Landline</b></label>
+          <input formControlName="landline" type="text" class="form-control" />
         </div>
       </div>
+
+      <div class="form-group">
+        <label><b>Website</b></label>
+        <input formControlName="website" type="url" class="form-control" />
+      </div>
+
+      <div>
+        <label><b>Address</b></label>
+        <textarea formControlName="address" class="form-control">
+        </textarea>
+      </div>
+
+      <div>
+        <button class="btn bg-success add-button" type="submit">
+          Add
+        </button>
+      </div>
+    </form>
   </div>
-    <div class="form-div" [ngClass]="{'Formstyle': _contactsinfoService.arr.length==0}">
-      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-
-        <div class="form-group">
-          <label> <b>Name</b> <span class="text-danger">*</span></label>
-          <input [class.is-invalid]="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched"
-            formControlName="name" type="text" class="form-control" required/>
-          <small [class.d-none]=" registrationForm.get('name')?.valid || registrationForm.get('name')?.untouched "
-            class="text-danger" >Username is required</small>
-        </div>
-
-        <div class="form-group">
-          <label><b>Email</b> <span class="text-danger">*</span></label>
-          <input [class.is-invalid]=" registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
-            formControlName="email" type="email" class="form-control" required />
-          <small [class.d-none]=" registrationForm.get('email')?.valid || registrationForm.get('email')?.untouched"
-            class="text-danger" >Email is required</small>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <label><b>Mobile</b> <span class="text-danger">*</span></label>
-            <input [class.is-invalid]="registrationForm.get('mobile')?.invalid &&  registrationForm.get('mobile')?.touched"
-              formControlName="mobile" type="text" class="form-control" required/>
-            <small
-              [class.d-none]="registrationForm.get('mobile')?.valid || registrationForm.get('mobile')?.untouched" class="text-danger"
-              >Mobile is required</small>
-          </div>
-          <div class="col">
-            <label><b>Landline</b></label>
-            <input formControlName="landline" type="text" class="form-control" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label><b>Website</b></label>
-          <input formControlName="website" type="url" class="form-control" />
-        </div>
-
-        <div>
-          <label><b>Address</b></label>
-          <textarea formControlName="address" class="form-control">
-          </textarea>
-        </div>
-
-        <div>
-          <button class="btn bg-success add-button" type="submit">
-            Add
-          </button>
-        </div>
-
-      </form>
-    </div>
-  </div>
-</body>
-</html>
+</div>

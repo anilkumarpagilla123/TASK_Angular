@@ -2,7 +2,7 @@
     display: flex
     margin-left: 10px
 
-.table
+.contacts
     width: 350px
     font-weight:15px
     font-size: 17px
@@ -10,13 +10,12 @@
     border-color:#e0e0e0
     border-width:0.1px
     margin-bottom:0px
-
-.table-data
-    border-width:1px
-    padding-left: 20px
-    padding-bottom: 10px
-    padding-top: 10px
-    cursor: pointer
+    .contact
+        border-width:1px
+        padding-left: 20px
+        padding-bottom: 10px
+        padding-top: 10px
+        cursor: pointer
 
 .selected
     background-color: #cfe7f3
@@ -30,25 +29,21 @@ h4
 .selected-contact
     margin-left: 90px
     display: inline-flex
-
-.Details
-    display: flex
-
+    .contact-Details
+        display: flex
+    .actions
+        display: inline
+        font-size: 15px
+        padding-top: 6px
+        position: absolute
+        margin-left:350px
+    .action-bar
+        display: inline
+        padding-right: 4px
+        margin-left: 5px
 pre
     font-size: 15px
     font-family: 'Lato', sans-serif
-
-.actions
-    display: inline
-    font-size: 15px
-    padding-top: 6px
-    position: absolute
-    margin-left:350px
-
-.action-bar
-    display: inline
-    padding-right: 4px
-    margin-left: 5px
 
 .contacts-empty
     margin-left:450px

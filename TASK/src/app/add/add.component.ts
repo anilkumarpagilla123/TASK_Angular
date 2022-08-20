@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsinfoService } from '../contactsinfo.service';
-import { FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,9 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ADDComponent implements OnInit {
 
-  public contacts: any = [];
-
-  constructor(public _contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
+  constructor(public contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
 
   ngOnInit(): void { }
 
@@ -28,18 +26,18 @@ export class ADDComponent implements OnInit {
   onSubmit(){
     if(this.registrationForm.value.name === '' || this.registrationForm.value.email === '' || this.registrationForm.value.mobile === '')
     {
-      window.alert('Enter Required Fields!')
+      console.log('Enter Required Fields!');
     }
     else{
-          this._contactsinfoService.arr.push(this.registrationForm.value)
-          this._contactsinfoService.index = this._contactsinfoService.arr.length-1;
-          this._contactsinfoService.showMyDiv = true;
-          this.router.navigate(['/'])
+          this.contactsinfoService.contacts.push(this.registrationForm.value);
+          this.contactsinfoService.index = this.contactsinfoService.contacts.length-1;
+          this.contactsinfoService.showContactDetails = true;
+          this.router.navigate(['/']);
     }
   }
-  displayContacts(i:number){
-    this._contactsinfoService.index = i
-    this._contactsinfoService.showMyDiv = true
+  displayContacts(contactId:number){
+    this.contactsinfoService.index = contactId;
+    this.contactsinfoService.showContactDetails = true;
     this.router.navigate(['/']);
   }
 }
