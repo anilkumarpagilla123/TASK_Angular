@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FosterateModule } from './fosterate/fosterate.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './fosterate/components/header/header.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppRoutingModule.routingComponents,
     HeaderComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule
+    FosterateModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactsinfoService } from '../../services/contactsinfo.service';
+import { ContactsinfoService } from '../../../fosterate/services/contactsinfo.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -20,12 +20,12 @@ export class EditComponent implements OnInit {
   constructor(public contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    this.name = this.contactsinfoService.contacts[this.contactsinfoService.index].name;
-    this.email=this.contactsinfoService.contacts[this.contactsinfoService.index].email;
-    this.mobile=this.contactsinfoService.contacts[this.contactsinfoService.index].mobile;
-    this.landline=this.contactsinfoService.contacts[this.contactsinfoService.index].landline;
-    this.website=this.contactsinfoService.contacts[this.contactsinfoService.index].website;
-    this.address=this.contactsinfoService.contacts[this.contactsinfoService.index].address;
+    this.name = this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].name;
+    this.email=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].email;
+    this.mobile=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].mobile;
+    this.landline=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].landline;
+    this.website=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].website;
+    this.address=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].address;
   }
 
   registrationForm = this.addForm.group({
@@ -43,13 +43,13 @@ export class EditComponent implements OnInit {
       console.log('Enter Required Fields!');
     }
     else{
-      this.contactsinfoService.contacts[this.contactsinfoService.index] =this.registrationForm.value;
+      this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId] =this.registrationForm.value;
       this.router.navigate(['/']);
     }
   }
 
-  displayContacts( contactId:number ){
-    this.contactsinfoService.index=contactId;
+  DisplayContact( contactId:number ){
+    this.contactsinfoService.selectedContactId=contactId;
     this.contactsinfoService.showContactDetails=true;
     this.router.navigate(['/']);
   }

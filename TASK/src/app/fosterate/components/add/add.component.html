@@ -1,14 +1,15 @@
+<h3 *ngIf="contactsinfoService.contacts.length!=0"><b>CONTACTS</b></h3>
 <div class="container">
   <div>
     <div class="contacts" *ngFor="let contact of contactsinfoService.contacts;let contactId=index;">
-      <div class="contact" (click) = "displayContacts(contactId)">
+      <div class="contact" (click) = "DisplayContact(contactId)">
           <div><h4>{{contact.name}}</h4></div>
           <div>{{contact.mobile}}</div>
           <div>{{contact.email}}</div>
       </div>
     </div>
 </div>
-  <div class="form-div" [ngClass]="{'Formstyle': contactsinfoService.contacts.length==0}">
+  <div class="form-div" [ngClass]="{'form-style': contactsinfoService.contacts.length==0}">
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">

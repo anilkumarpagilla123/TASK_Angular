@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ContactsinfoService {
 
-  public index: number = 0;
+  public selectedContactId: number = 0;
   public showContactDetails: boolean = true;
 
   public contacts: any = [

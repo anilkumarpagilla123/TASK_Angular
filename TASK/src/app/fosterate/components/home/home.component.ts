@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { ContactsinfoService } from '../../services/contactsinfo.service';
 import { Router } from '@angular/router';
 
@@ -8,21 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.sass']
 })
 
-export class HOMEComponent implements OnInit {
+export class HOMEComponent {
 
   constructor(public contactsinfoService: ContactsinfoService, private router: Router) { }
 
-  ngOnInit(): void { }
-
-  displayContacts(contactId: number){
-    this.contactsinfoService.index = contactId;
+  DisplayContact(contactId: number){
+    this.contactsinfoService.selectedContactId = contactId;
     this.contactsinfoService.showContactDetails = true;
   }
 
-  onDeleteContact(){
-    this.contactsinfoService.contacts.splice(this.contactsinfoService.index, 1);
-    if(this.contactsinfoService.index=0){
-      this.contactsinfoService.index = 0;
+  DeleteContact(){
+    this.contactsinfoService.contacts.splice(this.contactsinfoService.selectedContactId, 1);
+    if(this.contactsinfoService.selectedContactId=0){
+      this.contactsinfoService.selectedContactId = 0;
       this.contactsinfoService.showContactDetails = true;
     }
     if(this.contactsinfoService.contacts.length==0){
@@ -30,7 +28,7 @@ export class HOMEComponent implements OnInit {
     }
   }
 
-  onEditContact(){
+  EditContact(){
     this.router.navigate(['/edit']);
   }
 }

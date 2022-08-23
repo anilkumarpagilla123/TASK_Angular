@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ContactsinfoService } from '../../services/contactsinfo.service';
 import { FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,11 +8,9 @@ import { Router } from '@angular/router';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.sass']
 })
-export class ADDComponent implements OnInit {
+export class ADDComponent {
 
   constructor(public contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
-
-  ngOnInit(): void { }
 
   registrationForm = this.addForm.group({
     name: ['', Validators.required],
@@ -30,13 +28,13 @@ export class ADDComponent implements OnInit {
     }
     else{
           this.contactsinfoService.contacts.push(this.registrationForm.value);
-          this.contactsinfoService.index = this.contactsinfoService.contacts.length-1;
+          this.contactsinfoService.selectedContactId = this.contactsinfoService.contacts.length-1;
           this.contactsinfoService.showContactDetails = true;
           this.router.navigate(['/']);
     }
   }
-  displayContacts(contactId:number){
-    this.contactsinfoService.index = contactId;
+  DisplayContact(contactId:number){
+    this.contactsinfoService.selectedContactId = contactId;
     this.contactsinfoService.showContactDetails = true;
     this.router.navigate(['/']);
   }

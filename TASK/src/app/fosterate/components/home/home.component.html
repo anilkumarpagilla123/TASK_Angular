@@ -1,8 +1,9 @@
-  <div class="container">
+<h3 *ngIf="contactsinfoService.contacts.length!=0"><b>CONTACTS</b></h3>
+<div class="container">
     <h2 *ngIf="contactsinfoService.contacts.length==0" class="contacts-empty">No Contacts Available</h2>
     <div>
-      <div class="contacts" *ngFor="let contact of contactsinfoService.contacts; let contactId = index;">
-        <div class="contact" (click) = "displayContacts(contactId)" [ngClass]="{'selected': contactsinfoService.index===contactId }">
+      <div class="contacts" *ngFor="let contact of contactsinfoService.contacts; let contactId = index ;">
+        <div class="contact" (click) = "DisplayContact(contactId)" [ngClass]="{'selected': contactsinfoService.selectedContactId===contactId }">
             <div><h4>{{contact.name}}</h4></div>
             <div>{{contact.mobile}}</div>
             <div>{{contact.email}}</div>
@@ -13,19 +14,19 @@
     <div class="selected-contact" *ngIf="contactsinfoService.showContactDetails">
       <div class="contact-Details">
         <div>
-            <h2> {{contactsinfoService.contacts[contactsinfoService.index].name}} </h2>
-            <div class="pb-2">Email: {{contactsinfoService.contacts[contactsinfoService.index].email}}</div>
-            <div class="pb-2">Mobile: {{contactsinfoService.contacts[contactsinfoService.index].mobile}}</div>
-            <div class="pb-2">Landline: {{contactsinfoService.contacts[contactsinfoService.index].landline}}</div>
-            <div class="pb-2">Website: {{contactsinfoService.contacts[contactsinfoService.index].website}} </div>
-            <pre>Address: {{contactsinfoService.contacts[contactsinfoService.index].address}}</pre>
+            <h2> {{contactsinfoService.contacts[contactsinfoService.selectedContactId].name}} </h2>
+            <div class="pb-2">Email: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].email}}</div>
+            <div class="pb-2">Mobile: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].mobile}}</div>
+            <div class="pb-2">Landline: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].landline}}</div>
+            <div class="pb-2">Website: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].website}} </div>
+            <pre>Address: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].address}}</pre>
         </div>
         <div class="actions">
             <ul style="margin: 0px;">
-                <li class="action-bar" (click) = "onEditContact()" style="padding-left: 65px; cursor: pointer;"><img style="height:15px; width: 15px; margin-bottom: 5px;" src="../../assets/Edit-icon.png" alt="Edit icon"></li>
-                <li class="action-bar" (click) = "onEditContact()" style="cursor: pointer;">EDIT</li>
-                <li class="action-bar" (click) = "onDeleteContact()" style="padding-left: 15px;cursor: pointer;"><img style="height: 22px;width: 15px; margin-bottom: 8px;" src="../../assets/delete1.png" alt="Delete icon"></li>
-                <li class="action-bar" (click) = "onDeleteContact()" style="cursor: pointer;">DELETE</li>
+                <li class="action-bar" (click) = "EditContact()" style="padding-left: 65px; cursor: pointer;"><img style="height:15px; width: 15px; margin-bottom: 5px;" src="../../assets/Edit-icon.png" alt="Edit icon"></li>
+                <li class="action-bar" (click) = "EditContact()" style="cursor: pointer;">EDIT</li>
+                <li class="action-bar" (click) = "DeleteContact()" style="padding-left: 15px;cursor: pointer;"><img style="height: 22px;width: 15px; margin-bottom: 8px;" src="../../assets/delete1.png" alt="Delete icon"></li>
+                <li class="action-bar" (click) = "DeleteContact()" style="cursor: pointer;">DELETE</li>
             </ul>
         </div>
       </div>
