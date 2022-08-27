@@ -1,56 +1,73 @@
+$element-display: flex
+$contact-display: inline
+$padding-value: 10px
+$element-size: 15px
+
+@mixin font-style($s,$w)
+    font:
+        size:$s
+        weight:$w
+
+@mixin element-margin($m)
+    margin-left: $m
+
 .container
-    display: flex
-    margin-left: 10px
+    @include element-margin(10px)
+    display: $element-display
 
 .contacts
+    @include font-style(17px,15px)
     width: 350px
-    font-weight:15px
-    font-size: 17px
-    border-style: solid
-    border-color:#e0e0e0
-    border-width:0.1px
+    border:
+        style: solid
+        color:#e0e0e0
+        width:0.1px
     margin-bottom:0px
     .contact
         border-width:1px
-        padding-left: 20px
-        padding-bottom: 10px
-        padding-top: 10px
+        padding:
+            left: 20px
+            bottom: $padding-value
+            top: $padding-value
         cursor: pointer
 
 .selected
     background-color: #cfe7f3
 
 h4
-    font-weight: 50
-    font-size: 20px
-    color: rgb(75, 74, 74)
+    @include font-style(20px,50px)
     font-family: 'Open Sans', sans-serif
+    color: rgb(75, 74, 74)
 
 .selected-contact
-    margin-left: 90px
-    display: inline-flex
+    @include element-margin(90px)
+    display: $contact-display
     .contact-Details
-        display: flex
+        display: $element-display
     .actions
-        display: inline
-        font-size: 15px
+        @include element-margin(350px)
+        display: $contact-display
+        font-size: $element-size
         padding-top: 6px
         position: absolute
-        margin-left:350px
     .action-bar
-        display: inline
+        @include element-margin(5px)
+        display: $contact-display
         padding-right: 4px
-        margin-left: 5px
+
+
 pre
-    font-size: 15px
-    font-family: 'Lato', sans-serif
+    font:
+        size: $element-size
+        family: 'Lato', sans-serif
 
 .contacts-empty
-    margin-left:450px
+    @include element-margin(450px)
     margin-top:50px
 
 h3
-    margin-left: 24px
+    @include element-margin(24px)
     font-size: 18px
-    padding-top: 15px
-    padding-bottom: 10px
+    padding:
+        top: 15px
+        bottom: $padding-value

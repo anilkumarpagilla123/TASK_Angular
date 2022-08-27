@@ -1,0 +1,59 @@
+$element-padding:10px
+$element-style:20px
+
+@mixin element-width($w)
+    width: $w
+
+@mixin element-style($w,$m)
+    width: $w
+    margin-left: $m
+
+.container
+  display: flex
+  margin:
+      left: 10px
+      bottom:50px
+
+.contacts
+    @include element-width(350px)
+    font:
+        weight:15px
+        size: 17px
+    border:
+        style: solid
+        color:#e0e0e0
+        width:0.1px
+    margin-bottom:0px
+    .contact
+        border-width:1px
+        padding:
+            left: $element-style
+            bottom: $element-padding
+            top: $element-padding
+        cursor: pointer
+
+h4
+    font:
+        weight: 50
+        size: $element-style
+        family: 'Open Sans', sans-serif
+    color: rgb(75, 74, 74)
+
+.add-button
+    @include element-style(110px,565px)
+    margin-top: $element-style
+
+form
+    @include element-width(600px)
+    padding: $element-style
+
+.form-div
+    @include element-style(710px,30px)
+    box-shadow: #333333 1px 1px 10px
+
+h3
+    margin-left: 24px
+    font-size: 18px
+    padding:
+        top: 15px
+        bottom: $element-padding

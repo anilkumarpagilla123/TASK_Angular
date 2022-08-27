@@ -1,47 +1,57 @@
-.header
-  background-color: #3398cc
-  color: white
-  padding: 20px 0px 28px 22px
-  font-weight: lighter
-  font-size: 50px
-  margin-bottom: 0px
-  margin-top: 0px
+$text-style: none
 
-.nav-bar
-  display: flex
-  list-style: none
-  background-color: #333333
-  color: white
-  margin-top: 0px
-  padding: 0px
-  justify-content: space-between
-  margin-bottom: 0px
-  .nav-item
+@mixin element-style($b,$c)
+    background-color: $b
+    color: $c
+
+@mixin element-display()
     display: flex
 
+@mixin element-margin($t,$b)
+    margin:
+        top: $t
+        bottom: $b
+
+.header
+    @include element-style(#3398cc,white)
+    @include element-margin(0px,0px)
+    padding: 20px 0px 28px 22px
+    font:
+        weight: lighter
+        size: 50px
+
+.nav-bar
+    @include element-display
+    @include element-style(#333333,white)
+    @include element-margin(0px,0px)
+    list-style: $text-style
+    padding: 0px
+    justify-content: space-between
+    .nav-item
+        @include element-display
+
 a
-  text-decoration: none
-  background-color: #333333
-  color: white
-  padding: 8px 8px 8px 10px
-  font-size: 15px
-  margin-right: 7px
+    @include element-style(#333333,white)
+    text-decoration: $text-style
+    padding: 8px 8px 8px 10px
+    font-size: 15px
+    margin-right: 7px
 
 a:hover
-  text-decoration: none
-  color: white
+    text-decoration: $text-style
+    color: white
 
 .active
-  background-color: #ff9900
-  color: black
-  .empty-space
-    background-color: white
-    width: 2px
-  a:hover
-    color: black
+    @include element-style(#ff9900,black)
+    .empty-space
+        background-color: white
+        width: 2px
+    a:hover
+        color: black
 
 .blog-icon
-  padding: 6px 0px 0px 0px
-  margin-right: 20px
-  margin-bottom: 2px
-  margin-top: 2px
+    padding: 6px 0px 0px 0px
+    margin:
+        right: 20px
+        bottom: 2px
+        top: 2px
