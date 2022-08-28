@@ -1,7 +1,7 @@
-<h3 *ngIf="contactsinfoService.contacts.length!=0"><b>CONTACTS</b></h3>
+<h3 *ngIf="contacts.length!=0"><b>CONTACTS</b></h3>
 <div class="container">
   <div>
-  <div class="contacts" *ngFor="let contact of contactsinfoService.contacts;let contactId = index ;">
+  <div class="contacts" *ngFor="let contact of contacts;let contactId = index ;">
     <div class="contact" (click) = "DisplayContact(contactId)">
         <div><h4>{{contact.name}}</h4></div>
         <div>{{contact.mobile}}</div>

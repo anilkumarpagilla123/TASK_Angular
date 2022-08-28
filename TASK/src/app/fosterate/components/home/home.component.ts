@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ContactsinfoService } from '../../services/contactsinfo.service';
 import { Router } from '@angular/router';
 
@@ -8,9 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.sass']
 })
 
-export class HOMEComponent {
+export class HOMEComponent implements OnInit{
+
+  public contacts: any = [];
 
   constructor(public contactsinfoService: ContactsinfoService, private router: Router) { }
+
+  ngOnInit(): void {
+      this.contacts=this.contactsinfoService.contacts;
+  }
 
   DisplayContact(contactId: number){
     this.contactsinfoService.selectedContactId = contactId;
@@ -18,12 +24,12 @@ export class HOMEComponent {
   }
 
   DeleteContact(){
-    this.contactsinfoService.contacts.splice(this.contactsinfoService.selectedContactId, 1);
+    this.contacts.splice(this.contactsinfoService.selectedContactId, 1);
     if(this.contactsinfoService.selectedContactId=0){
       this.contactsinfoService.selectedContactId = 0;
       this.contactsinfoService.showContactDetails = true;
     }
-    if(this.contactsinfoService.contacts.length==0){
+    if(this.contacts.length==0){
       this.contactsinfoService.showContactDetails = false;
     }
   }

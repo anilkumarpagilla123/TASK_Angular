@@ -1,8 +1,8 @@
-<h3 *ngIf="contactsinfoService.contacts.length!=0"><b>CONTACTS</b></h3>
+<h3 *ngIf="contacts.length!=0"><b>CONTACTS</b></h3>
 <div class="container">
-    <h2 *ngIf="contactsinfoService.contacts.length==0" class="contacts-empty">No Contacts Available</h2>
+    <h2 *ngIf="contacts.length==0" class="contacts-empty">No Contacts Available</h2>
     <div>
-      <div class="contacts" *ngFor="let contact of contactsinfoService.contacts; let contactId = index ;">
+      <div class="contacts" *ngFor="let contact of contacts; let contactId = index ;">
         <div class="contact" (click) = "DisplayContact(contactId)" [ngClass]="{'selected': contactsinfoService.selectedContactId===contactId }">
             <div><h4>{{contact.name}}</h4></div>
             <div>{{contact.mobile}}</div>
@@ -14,12 +14,12 @@
     <div class="selected-contact" *ngIf="contactsinfoService.showContactDetails">
       <div class="contact-Details">
         <div>
-            <h2> {{contactsinfoService.contacts[contactsinfoService.selectedContactId].name}} </h2>
-            <div class="pb-2">Email: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].email}}</div>
-            <div class="pb-2">Mobile: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].mobile}}</div>
-            <div class="pb-2">Landline: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].landline}}</div>
-            <div class="pb-2">Website: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].website}} </div>
-            <pre>Address: {{contactsinfoService.contacts[contactsinfoService.selectedContactId].address}}</pre>
+            <h2> {{contacts[contactsinfoService.selectedContactId].name}} </h2>
+            <div class="pb-2">Email: {{contacts[contactsinfoService.selectedContactId].email}}</div>
+            <div class="pb-2">Mobile: {{contacts[contactsinfoService.selectedContactId].mobile}}</div>
+            <div class="pb-2">Landline: {{contacts[contactsinfoService.selectedContactId].landline}}</div>
+            <div class="pb-2">Website: {{contacts[contactsinfoService.selectedContactId].website}} </div>
+            <pre>Address: {{contacts[contactsinfoService.selectedContactId].address}}</pre>
         </div>
         <div class="actions">
             <ul style="margin: 0px;">

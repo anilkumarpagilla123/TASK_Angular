@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactsinfoService } from '../../services/contactsinfo.service';
 import { FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.sass']
 })
-export class ADDComponent {
-
+export class ADDComponent implements OnInit{
+  public contacts: any = [];
   constructor(public contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
+
+  ngOnInit(): void {
+    this.contacts=this.contactsinfoService.contacts;
+  }
 
   registrationForm = this.addForm.group({
     name: ['', Validators.required],
@@ -27,8 +31,8 @@ export class ADDComponent {
       console.log('Enter Required Fields!');
     }
     else{
-          this.contactsinfoService.contacts.push(this.registrationForm.value);
-          this.contactsinfoService.selectedContactId = this.contactsinfoService.contacts.length-1;
+          this.contacts.push(this.registrationForm.value);
+          this.contactsinfoService.selectedContactId = this.contacts.length-1;
           this.contactsinfoService.showContactDetails = true;
           this.router.navigate(['/']);
     }

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class EditComponent implements OnInit {
 
+  public contacts: any = [];
   name:String = '';
   email:String = '';
   mobile:String = '';
@@ -20,12 +21,13 @@ export class EditComponent implements OnInit {
   constructor(public contactsinfoService: ContactsinfoService, private addForm: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    this.name = this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].name;
-    this.email=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].email;
-    this.mobile=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].mobile;
-    this.landline=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].landline;
-    this.website=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].website;
-    this.address=this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId].address;
+    this.contacts = this.contactsinfoService.contacts;
+    this.name=this.contacts[this.contactsinfoService.selectedContactId].name;
+    this.email=this.contacts[this.contactsinfoService.selectedContactId].email;
+    this.mobile=this.contacts[this.contactsinfoService.selectedContactId].mobile;
+    this.landline=this.contacts[this.contactsinfoService.selectedContactId].landline;
+    this.website=this.contacts[this.contactsinfoService.selectedContactId].website;
+    this.address=this.contacts[this.contactsinfoService.selectedContactId].address;
   }
 
   registrationForm = this.addForm.group({
@@ -43,7 +45,7 @@ export class EditComponent implements OnInit {
       console.log('Enter Required Fields!');
     }
     else{
-      this.contactsinfoService.contacts[this.contactsinfoService.selectedContactId] =this.registrationForm.value;
+      this.contacts[this.contactsinfoService.selectedContactId] =this.registrationForm.value;
       this.router.navigate(['/']);
     }
   }
